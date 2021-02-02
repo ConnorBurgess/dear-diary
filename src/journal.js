@@ -14,15 +14,17 @@ export function NewEntry(title, inputtedString){
 NewEntry.prototype.countWords = function(){
   this.entry = this.inputtedString.split(" ");
   this.sentenceCounter = this.entry.length;
-  console.log(this.sentenceCounter);
+ // console.log(this.sentenceCounter);
 }
 
 //Prototype method counts number of vowels/consonants in an entry
 NewEntry.prototype.phonetics = function(){
-  for (let i = 0; i < this.inputtedString.length){
-  let aeoiu = /[aeiou]/g;
-  this.numOfVowels = aeoiu.test(this.inputtedString);
-  console.log(numOfVowels);
+  for (let i = 0; i < this.inputtedString.length; i++){
+    if (/[aeoiu]/gi.test(this.inputtedString[i])) {
+      this.numOfVowels += 1;
+      console.log(this.numOfVowels);
+    }
+
   }
 }
 
@@ -33,7 +35,8 @@ NewEntry.prototype.getTeaser = function(){
 }
 
 // Test area
-let entry1 = new NewEntry("this title", "This is a sentence");
+let entry1 = new NewEntry("this title", "theee sky");
 entry1.countWords();
+entry1.phonetics();
 
 /* es-lint disable */
